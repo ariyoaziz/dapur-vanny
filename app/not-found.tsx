@@ -1,8 +1,24 @@
+import Link from "next/link";
+
 export default function NotFound() {
     return (
-        <div style={{ textAlign: "center", padding: "100px" }}>
-            <h1>404</h1>
-            <p>Halaman tidak ditemukan</p>
+        <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
+
+            <h1 className="text-5xl font-bold mb-4">
+                404
+            </h1>
+
+            <p className="text-gray-600 mb-6">
+                Halaman yang Anda cari tidak ditemukan.
+            </p>
+
+            <Link
+                href="/"
+                className="bg-[#C65A3A] text-white px-6 py-3 rounded-full"
+            >
+                Kembali ke Beranda
+            </Link>
+
         </div>
     );
 }
