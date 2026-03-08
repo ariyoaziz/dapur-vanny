@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 export default function CaraPesan() {
-    return <div>Cara Pesan</div>;
+    notFound();
 }
