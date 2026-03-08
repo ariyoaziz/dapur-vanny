@@ -1,37 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dapur Vanny 🍽️
 
-## Getting Started
+Website landing page untuk **Dapur Vanny**, sebuah layanan catering yang menyediakan berbagai menu makanan dan paket acara.
 
-First, run the development server:
+Project ini dibuat menggunakan **Next.js** untuk menampilkan informasi menu, paket acara, serta memudahkan pelanggan melakukan pemesanan melalui WhatsApp.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Live Demo
+
+https://dapur-vanny.vercel.app
+
+---
+
+## ✨ Features
+
+* Landing page catering
+* Daftar menu makanan
+* Paket acara
+* Halaman cara pemesanan
+* Integrasi WhatsApp untuk pemesanan
+* Responsive design (mobile friendly)
+
+---
+
+## 🛠 Tech Stack
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+
+---
+
+## 📂 Project Structure
+
+```
+app/
+components/
+data/
+public/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **app/** → routing dan halaman utama
+* **components/** → komponen UI
+* **data/** → data menu atau konten statis
+* **public/** → gambar dan asset statis
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Installation
 
-## Learn More
+Clone repository:
 
-To learn more about Next.js, take a look at the following resources:
+```
+git clone https://github.com/ariyoaziz/dapur-vanny.git
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Masuk ke folder project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+cd dapur-vanny
+```
 
-## Deploy on Vercel
+Install dependency:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm install
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# dapur-vanny
+Jalankan development server:
+
+```
+npm run dev
+```
+
+Buka di browser:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 📦 Deployment
+
+Project ini dideploy menggunakan **Vercel**.
+
+Setiap perubahan yang di-push ke GitHub akan otomatis dideploy.
+
+---
+
+## 👨‍💻 Author
+
+Ariyo Aziz
