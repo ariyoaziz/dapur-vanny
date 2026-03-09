@@ -11,25 +11,15 @@ export default function MenuPage() {
 
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("semua");
-    const [page, setPage] = useState(1);
-
     const ITEMS_PER_PAGE = 6;
 
-    const allItems = [
-        ...menuItems.map(item => ({ ...item, baseRoute: 'menu' })),
-        ...makananKeringItems.map(item => ({ ...item, baseRoute: 'makanan-kering' }))
-    ];
-
     // FILTER + SEARCH
-    const filteredMenu = allItems.filter((item) => {
-
-        const matchCategory =
-            category === "semua" || item.category.toLowerCase() === category.toLowerCase();
+    const filteredMenu = makananKeringItems.filter((item) => {
 
         const matchSearch =
             item.name.toLowerCase().includes(search.toLowerCase());
 
-        return matchCategory && matchSearch;
+        return matchSearch;
 
     });
 
@@ -53,12 +43,11 @@ export default function MenuPage() {
                     {/* TITLE */}
                     <div className="text-center">
                         <h1 className="text-3xl md:text-4xl font-bold text-(--dark)">
-                            Aneka Menu Jajan Pasar
+                            Aneka Pesanan Makanan Kering
                         </h1>
 
                         <p className="text-gray-600 mt-3 max-w-3xl mx-auto">
-                            Tersedia berbagai pilihan jajan pasar yang bisa disesuaikan
-                            dengan kebutuhan acara Anda.
+                            Tersedia berbagai pilihan kue kering lezat yang siap dikirim langsung ke seluruh Indonesia.
                         </p>
                     </div>
 
@@ -103,32 +92,7 @@ export default function MenuPage() {
                     </div>
 
 
-                    {/* FILTER CATEGORY */}
-                    <div className="flex justify-center mt-6 gap-3 flex-wrap">
-
-                        {[
-                            { label: "Semua", value: "semua" },
-                            { label: "Makanan Basah", value: "Basah" },
-                            { label: "Makanan Kering", value: "Kering" }
-                        ].map((cat) => (
-
-                            <button
-                                key={cat.value}
-                                onClick={() => {
-                                    setCategory(cat.value);
-                                    setVisibleCount(ITEMS_PER_PAGE);
-                                }}
-                                className={`px-4 py-1 rounded-full text-sm ${category === cat.value
-                                    ? "bg-(--primary) text-white"
-                                    : "border border-gray-200"
-                                    }`}
-                            >
-                                {cat.label}
-                            </button>
-
-                        ))}
-
-                    </div>
+                    {/* FILTER CATEGORY REMOVED FOR DEDICATED DRY PAGE */}
 
 
                     {/* MENU GRID */}
@@ -157,7 +121,7 @@ export default function MenuPage() {
                                     key={item.id}
                                     {...item}
                                     index={index}
-                                    baseRoute={item.baseRoute}
+                                    baseRoute="makanan-kering"
                                 />
                             ))
 

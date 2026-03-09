@@ -237,13 +237,13 @@ export default function Home() {
         </div>
 
         {/* GRID MENU */}
-        <div className="max-w-7xl mx-auto px-6 mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 md:gap-x-8 md:gap-y-12">
-          {menuItems.map((item, index) => (
+        <div className="max-w-7xl mx-auto px-6 mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 md:gap-x-8 md:gap-y-12">
+          {menuItems.slice(0, 6).map((item, index) => (
             <div
               key={item.id}
               style={{ animationDelay: `${(index % 6) * 150}ms` }}
               className={`bg-white rounded-2xl p-4 md:p-5 shadow-sm border border-gray-100 flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-md animate-fadeUp opacity-0 [animation-fill-mode:forwards] h-full
-  ${index >= 3 ? "hidden lg:flex" : ""}`}
+  ${index >= 3 ? "hidden md:flex" : ""}`}
             >
 
               {/* IMAGE */}
@@ -315,7 +315,7 @@ export default function Home() {
             {testimonials.map((item) => (
               <div
                 key={item.id}
-                className="min-w-70 bg-white rounded-2xl p-6 border border-[#E8D8CC]"
+                className="min-w-[80vw] md:min-w-70 bg-white rounded-2xl p-6 border border-(--cream) shadow-sm"
               >
 
                 <div className="text-yellow-400 text-lg">
@@ -342,7 +342,7 @@ export default function Home() {
             {testimonials.slice(0, 3).map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl p-6 border border-[#E8D8CC]"
+                className="bg-white rounded-2xl p-6 border border-(--cream) shadow-sm"
               >
 
                 <div className="text-yellow-400 text-lg">

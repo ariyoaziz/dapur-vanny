@@ -1,11 +1,11 @@
-import { menuItems } from "@/data/menu";
+import { makananKeringItems } from "@/data/makanan-kering";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import OrderForm from "@/components/OrderForm";
 
 export async function generateStaticParams() {
-    return menuItems.map((item) => ({
+    return makananKeringItems.map((item) => ({
         slug: item.slug,
     }));
 }
@@ -19,7 +19,7 @@ export default async function ProductDetailPage({
     const resolvedParams = await params;
     const { slug } = resolvedParams;
 
-    const product = menuItems.find((item) => item.slug === slug);
+    const product = makananKeringItems.find((item) => item.slug === slug);
 
     if (!product) {
         notFound();
@@ -28,8 +28,8 @@ export default async function ProductDetailPage({
     return (
         <section className="py-12 md:py-20 lg:py-24 max-w-7xl mx-auto px-6">
 
-            <Link href="/menu" className="inline-flex items-center text-(--primary) hover:text-(--dark) hover:underline font-medium mb-8 transition-colors">
-                &larr; Kembali ke Menu
+            <Link href="/makanan-kering" className="inline-flex items-center text-(--primary) hover:text-(--dark) hover:underline font-medium mb-8 transition-colors">
+                &larr; Kembali ke Makanan Kering
             </Link>
 
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
@@ -56,7 +56,7 @@ export default async function ProductDetailPage({
                     <div className="mt-8 flex-grow">
                         <div className="flex items-center gap-3 mb-4">
                             <span className="bg-(--cream) text-(--dark) px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
-                                {product.category.replace('-', ' ')}
+                                Makanan Kering
                             </span>
                             <span className="text-green-700 font-medium text-xs md:text-sm flex items-center gap-1.5 bg-green-100 px-3 py-1 rounded-full">
                                 <span className="w-2 h-2 rounded-full bg-green-500"></span>

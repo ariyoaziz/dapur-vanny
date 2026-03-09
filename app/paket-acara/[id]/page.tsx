@@ -95,6 +95,7 @@ export default async function PackageDetailPage({
                         productName={packageItem.name}
                         productPrice={packageItem.price}
                         productUnit={"box"}
+                        isNationwideShipping={false}
                     />
                 </div>
 

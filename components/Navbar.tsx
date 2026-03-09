@@ -15,6 +15,7 @@ export default function Navbar() {
     const menu = [
         { name: "Beranda", href: "/" },
         { name: "Menu", href: "/menu" },
+        { name: "Makanan Kering", href: "/makanan-kering" },
         { name: "Paket Acara", href: "/paket-acara" },
         { name: "Cara Pesan", href: "/cara-pesan" },
     ];
