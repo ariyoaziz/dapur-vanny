@@ -5,13 +5,19 @@ import { testimonials } from "@/data/testimonials";
 import { steps } from "@/data/steps";
 import CTA from "@/components/CTA";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Beranda | Dapur Vanny Wadaslintang",
+  description: "Selamat datang di Dapur Vanny. Solusi aneka jajan pasar dan snack box untuk arisan, hajatan, dan acara keluarga Anda.",
+};
 
 export default function Home() {
   return (
     <>
       <section className="py-16 md:py-20 lg:py-24">
 
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-12 items-center">
 
           {/* LEFT CONTENT */}
           <div className="animate-fadeUp opacity-0 [animation-delay:100ms] [animation-fill-mode:forwards]">
@@ -38,13 +44,15 @@ export default function Home() {
                 href="https://wa.me/6287762707319"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Pesan Via WhatsApp"
                 className="flex items-center gap-2 bg-(--secondary) text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition"
               >
                 <Image
                   src="/whatsapp.svg"
-                  alt="WhatsApp"
+                  alt="WhatsApp Icon"
                   width={20}
                   height={20}
+                  aria-hidden="true"
                 />
                 Pesan Via WhatsApp
               </a>
@@ -66,7 +74,7 @@ export default function Home() {
           </div>
 
           {/* RIGHT IMAGE GRID */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-4 ">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6 mt-8 md:mt-0">
 
             <Image
               src="/hero.jpg"
@@ -243,7 +251,7 @@ export default function Home() {
               key={item.id}
               style={{ animationDelay: `${(index % 6) * 150}ms` }}
               className={`bg-white rounded-2xl p-4 md:p-5 shadow-sm border border-gray-100 flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-md animate-fadeUp opacity-0 [animation-fill-mode:forwards] h-full
-  ${index >= 3 ? "hidden md:flex" : ""}`}
+  ${index >= 4 ? "hidden lg:flex" : "flex"} ${index >= 3 && index < 4 ? "hidden md:flex" : ""}`}
             >
 
               {/* IMAGE */}

@@ -38,7 +38,7 @@ export default function Navbar() {
 
 
                     {/* Desktop Menu */}
-                    <nav className="hidden md:flex items-center gap-8 text-white font-medium">
+                    <nav className="hidden lg:flex items-center gap-8 text-white font-medium">
 
                         {menu.map((item) => {
 
@@ -67,11 +67,13 @@ export default function Navbar() {
                         href="https://wa.me/6287762707319"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hidden md:flex bg-white text-[#3A2A24] px-6 py-2 rounded-full font-semibold items-center gap-2 hover:scale-105 transition"
+                        aria-label="Pesan via WhatsApp"
+                        className="hidden lg:flex bg-white text-[#3A2A24] px-6 py-2 rounded-full font-semibold items-center gap-2 hover:scale-105 transition"
                     >
                         <Image
                             src="/whatsapp.svg"
-                            alt="WhatsApp"
+                            alt=""
+                            aria-hidden="true"
                             width={20}
                             height={20}
                         />
@@ -82,7 +84,9 @@ export default function Navbar() {
                     {/* Hamburger */}
                     <button
                         onClick={() => setOpen(!open)}
-                        className="md:hidden text-white"
+                        aria-label="Toggle Menu"
+                        aria-expanded={open}
+                        className="lg:hidden text-white hover:opacity-80 transition-opacity"
                     >
 
                         {open ? (
@@ -122,10 +126,10 @@ export default function Navbar() {
             </div>
 
 
-            {/* Mobile Menu */}
+            {/* Mobile/Tablet Menu */}
             {open && (
 
-                <div className="md:hidden bg-[#C65A3A] text-white flex flex-col items-center gap-6 py-6 shadow-lg">
+                <div className="lg:hidden bg-[#C65A3A] text-white flex flex-col items-center gap-6 py-6 shadow-lg animate-in slide-in-from-top-4 duration-200">
 
                     {menu.map((item) => {
 
@@ -152,9 +156,10 @@ export default function Navbar() {
                         href="https://wa.me/6287762707319"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Pesan via WhatsApp"
                         className="bg-white text-[#3A2A24] px-6 py-2 rounded-full font-semibold flex items-center gap-2"
                     >
-                        <Image src="/whatsapp.svg" alt="WhatsApp" width={20} height={20} />
+                        <Image src="/whatsapp.svg" alt="" aria-hidden="true" width={20} height={20} />
                         Pesan Sekarang
                     </a>
 

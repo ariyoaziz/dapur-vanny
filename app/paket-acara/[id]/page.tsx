@@ -3,11 +3,40 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import OrderForm from "@/components/OrderForm";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
     return packageItems.map((item) => ({
         id: item.id.toString(),
     }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+    const resolvedParams = await params;
+    const { id } = resolvedParams;
+    const packageItem = packageItems.find((item) => item.id.toString() === id);
+
+    if (!packageItem) {
+        return { title: "Dapur Vanny" };
+    }
+
+    return {
+        title: `Paket ${packageItem.name} | Dapur Vanny`,
+        description: `Pesan Paket ${packageItem.name} untuk acara Anda. Harga mulai Rp${packageItem.price.toLocaleString()} per box. Cocok untuk arisan dan syukuran.`,
+        openGraph: {
+            title: `Paket ${packageItem.name} | Dapur Vanny`,
+            description: `Pesan Paket ${packageItem.name} untuk acara Anda. Harga mulai Rp${packageItem.price.toLocaleString()} per box.`,
+            images: [
+                {
+                    url: packageItem.image || '/og-bg.png',
+                    width: 1200,
+                    height: 630,
+                    alt: packageItem.name,
+                }
+            ],
+            type: 'website',
+        }
+    };
 }
 
 export default async function PackageDetailPage({
@@ -31,7 +60,7 @@ export default async function PackageDetailPage({
                 &larr; Kembali ke Paket Acara
             </Link>
 
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start max-w-5xl mx-auto">
 
                 {/* PACKAGE IMAGE & INFO */}
                 <div className="flex flex-col">

@@ -251,9 +251,10 @@ Apakah pesanan ini bisa segera diproses?`;
 
             <div className="space-y-5 flex-grow">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Nama Lengkap <span className="text-red-500">*</span></label>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Nama Lengkap <span className="text-red-500">*</span></label>
                     <input
                         type="text"
+                        id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
@@ -267,8 +268,9 @@ Apakah pesanan ini bisa segera diproses?`;
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Provinsi <span className="text-red-500">*</span></label>
+                        <label htmlFor="provinceId" className="block text-sm font-medium text-gray-700 mb-1.5">Provinsi <span className="text-red-500">*</span></label>
                         <select
+                            id="provinceId"
                             value={formData.provinceId}
                             onChange={handleProvinceChange}
                             className={`w-full rounded-xl px-4 py-3 outline-none text-sm transition bg-white border ${invalidFields.includes("provinceId")
@@ -285,8 +287,9 @@ Apakah pesanan ini bisa segera diproses?`;
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Kota/Kabupaten <span className="text-red-500">*</span></label>
+                        <label htmlFor="regencyId" className="block text-sm font-medium text-gray-700 mb-1.5">Kota/Kabupaten <span className="text-red-500">*</span></label>
                         <select
+                            id="regencyId"
                             value={formData.regencyId}
                             onChange={handleRegencyChange}
                             disabled={!formData.provinceId}
@@ -304,8 +307,9 @@ Apakah pesanan ini bisa segera diproses?`;
                     </div>
 
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Kecamatan <span className="text-red-500">*</span></label>
+                        <label htmlFor="districtId" className="block text-sm font-medium text-gray-700 mb-1.5">Kecamatan <span className="text-red-500">*</span></label>
                         <select
+                            id="districtId"
                             value={formData.districtId}
                             onChange={handleDistrictChange}
                             disabled={!formData.regencyId}
@@ -324,8 +328,9 @@ Apakah pesanan ini bisa segera diproses?`;
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Detail Alamat <span className="text-red-500">*</span></label>
+                    <label htmlFor="addressDetail" className="block text-sm font-medium text-gray-700 mb-1.5">Detail Alamat <span className="text-red-500">*</span></label>
                     <textarea
+                        id="addressDetail"
                         name="addressDetail"
                         value={formData.addressDetail}
                         onChange={handleChange}
@@ -340,9 +345,10 @@ Apakah pesanan ini bisa segera diproses?`;
 
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Jumlah <span className="text-red-500">*</span></label>
+                        <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-1.5">Jumlah <span className="text-red-500">*</span></label>
                         <input
                             type="number"
+                            id="quantity"
                             name="quantity"
                             value={formData.quantity}
                             onChange={handleChange}
@@ -354,9 +360,10 @@ Apakah pesanan ini bisa segera diproses?`;
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Tanggal <span className="text-red-500">*</span></label>
+                        <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1.5">Tanggal <span className="text-red-500">*</span></label>
                         <input
                             type="date"
+                            id="date"
                             name="date"
                             value={formData.date}
                             onChange={handleChange}
@@ -369,8 +376,9 @@ Apakah pesanan ini bisa segera diproses?`;
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Catatan Tambahan</label>
+                    <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-1.5">Catatan Tambahan</label>
                     <textarea
+                        id="notes"
                         name="notes"
                         value={formData.notes}
                         onChange={handleChange}
@@ -389,9 +397,10 @@ Apakah pesanan ini bisa segera diproses?`;
 
                 <button
                     onClick={handleCheckout}
+                    aria-label="Pesan via WhatsApp dengan form pesanan ini"
                     className="w-full bg-(--primary) text-white py-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition shadow-sm"
                 >
-                    <Image src="/whatsapp.svg" alt="WhatsApp" width={22} height={22} />
+                    <Image src="/whatsapp.svg" alt="" aria-hidden="true" width={22} height={22} />
                     Pesan via WhatsApp
                 </button>
             </div>

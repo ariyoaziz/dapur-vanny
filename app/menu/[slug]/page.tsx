@@ -3,11 +3,40 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import OrderForm from "@/components/OrderForm";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
     return menuItems.map((item) => ({
         slug: item.slug,
     }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const resolvedParams = await params;
+    const { slug } = resolvedParams;
+    const product = menuItems.find((item) => item.slug === slug);
+
+    if (!product) {
+        return { title: "Dapur Vanny" };
+    }
+
+    return {
+        title: `${product.name} | Dapur Vanny Wadaslintang`,
+        description: `Beli ${product.name} yang baru dibuat. ${product.desc} Pesan sekarang dari katalog jajan pasar Dapur Vanny.`,
+        openGraph: {
+            title: `${product.name} | Dapur Vanny`,
+            description: `Beli ${product.name}. ${product.desc}`,
+            images: [
+                {
+                    url: product.image || '/og-bg.png',
+                    width: 1200,
+                    height: 630,
+                    alt: product.name,
+                }
+            ],
+            type: 'website',
+        }
+    };
 }
 
 export default async function ProductDetailPage({
@@ -32,7 +61,7 @@ export default async function ProductDetailPage({
                 &larr; Kembali ke Menu
             </Link>
 
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start max-w-5xl mx-auto">
 
                 {/* PRODUCT IMAGE & INFO */}
                 <div className="flex flex-col">
