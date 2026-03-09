@@ -23,7 +23,9 @@ export default function CTA() {
                 <div className="mt-8 flex justify-center">
 
                     <a
-                        href="https://wa.me/628000000000"
+                        href="https://wa.me/6287762707319"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center gap-2 sm:gap-3 bg-white text-(--dark) 
       px-5 sm:px-6 md:px-8 py-3 rounded-full font-semibold 
       text-sm sm:text-base

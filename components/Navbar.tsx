@@ -24,8 +24,7 @@ export default function Navbar() {
 
             <div className="bg-[#C65A3A] shadow-md backdrop-blur-md">
 
-                <div className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
-
+                <div className="max-w-7xl mx-auto px-5 md:px-8 py-2.5 md:py-3 flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2">
                         <Image
@@ -64,13 +63,16 @@ export default function Navbar() {
 
                     {/* Desktop Button */}
                     <a
-                        href="https://wa.me/628000000000"
+                        href="https://wa.me/6287762707319"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="hidden md:flex bg-white text-[#3A2A24] px-6 py-2 rounded-full font-semibold items-center gap-2 hover:scale-105 transition"
                     >
-                        <img
+                        <Image
                             src="/whatsapp.svg"
                             alt="WhatsApp"
-                            className="w-5 h-5"
+                            width={20}
+                            height={20}
                         />
                         Pesan Sekarang
                     </a>
@@ -146,10 +148,12 @@ export default function Navbar() {
                     })}
 
                     <a
-                        href="https://wa.me/628000000000"
+                        href="https://wa.me/6287762707319"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-white text-[#3A2A24] px-6 py-2 rounded-full font-semibold flex items-center gap-2"
                     >
-                        <img src="/whatsapp.svg" alt="WhatsApp" className="w-5 h-5" />
+                        <Image src="/whatsapp.svg" alt="WhatsApp" width={20} height={20} />
                         Pesan Sekarang
                     </a>
 

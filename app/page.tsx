@@ -4,16 +4,17 @@ import { menuItems } from "@/data/menu";
 import { testimonials } from "@/data/testimonials";
 import { steps } from "@/data/steps";
 import CTA from "@/components/CTA";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <section className="py-12 md:py-16">
+      <section className="py-16 md:py-20 lg:py-24">
 
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
 
           {/* LEFT CONTENT */}
-          <div>
+          <div className="animate-fadeUp opacity-0 [animation-delay:100ms] [animation-fill-mode:forwards]">
 
             <p className="text-(--primary) font-medium mb-4">
               Aneka Jajan Pasar & Snack Box
@@ -34,13 +35,16 @@ export default function Home() {
 
               {/* WA BUTTON */}
               <a
-                href="https://wa.me/628000000000"
+                href="https://wa.me/6287762707319"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-(--secondary) text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition"
               >
-                <img
+                <Image
                   src="/whatsapp.svg"
                   alt="WhatsApp"
-                  className="w-5 h-5"
+                  width={20}
+                  height={20}
                 />
                 Pesan Via WhatsApp
               </a>
@@ -233,17 +237,17 @@ export default function Home() {
         </div>
 
         {/* GRID MENU */}
-        <div className="max-w-7xl mx-auto px-6 mt-16 grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
+        <div className="max-w-7xl mx-auto px-6 mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 md:gap-x-8 md:gap-y-12">
           {menuItems.map((item, index) => (
             <div
               key={item.id}
-              className={`bg-white rounded-2xl p-4 md:p-5 shadow-sm border border-gray-100 flex flex-col
-      ${index >= 4 ? "hidden lg:flex" : ""}`}
+              style={{ animationDelay: `${(index % 6) * 150}ms` }}
+              className={`bg-white rounded-2xl p-4 md:p-5 shadow-sm border border-gray-100 flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-md animate-fadeUp opacity-0 [animation-fill-mode:forwards] h-full
+  ${index >= 3 ? "hidden lg:flex" : ""}`}
             >
 
               {/* IMAGE */}
-              <div className="w-full aspect-4/3 overflow-hidden rounded-xl">
+              <div className="w-full aspect-[4/3] overflow-hidden rounded-xl">
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -268,9 +272,12 @@ export default function Home() {
                   {item.price}
                 </p>
 
-                <button className="mt-4 bg-(--primary) text-white px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:opacity-90 transition self-start">
-                  Pesan Sekarang
-                </button>
+                <Link
+                  href={`/menu/${item.slug}`}
+                  className="w-full text-center mt-auto pt-6"
+                >
+                  <div className="bg-(--primary) text-white px-5 py-3 rounded-xl text-sm font-semibold hover:opacity-90 transition active:scale-95">Lihat Detail</div>
+                </Link>
 
               </div>
 
@@ -363,8 +370,8 @@ export default function Home() {
 
         <div className="max-w-5xl mx-auto px-6">
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-(--dark) max-w-2xl mx-auto leading-snug">
-            Percayakan Jajan Pasar Acara Anda ke Dapur Vanny
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-(--dark)">
+            Cara Mudah Memesan di Dapur Vanny
           </h2>
 
           <p className="text-gray-600 mt-4 text-center max-w-xl mx-auto">

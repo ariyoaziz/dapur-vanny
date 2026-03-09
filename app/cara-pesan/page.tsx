@@ -1,119 +1,119 @@
-import Link from "next/link";
+import Image from "next/image";
 import CTA from "@/components/CTA";
+import { orderSteps } from "@/data/orderSteps";
+import FAQ from "@/components/FAQ";
 
 export default function CaraPesanPage() {
     return (
         <>
             <section className="py-20">
 
-                <div className="max-w-7xl mx-auto px-6">
+                <div className="max-w-6xl mx-auto px-6">
 
                     {/* TITLE */}
-                    <div className="text-center max-w-2xl mx-auto">
+                    <div className="text-center max-w-3xl mx-auto">
 
                         <h1 className="text-3xl md:text-4xl font-bold text-(--dark)">
-                            Cara Memesan Snack Box di Dapur Vanny
+                            Cara Mudah Memesan di Dapur Vanny
                         </h1>
 
                         <p className="text-gray-600 mt-4">
-                            Proses pemesanan sangat mudah dan cepat. Ikuti langkah berikut untuk
-                            memesan jajan pasar atau snack box untuk acara Anda.
+                            Pesan jajan pasar untuk acara Anda dengan langkah yang jelas dan praktis.
                         </p>
 
                     </div>
 
 
-                    {/* STEPS */}
-                    <div className="grid mt-16 gap-10 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="mt-16 space-y-16">
 
-                        {/* STEP 1 */}
-                        <div className="text-center">
+                        {orderSteps.map((step, index) => {
 
-                            <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-(--primary) text-white text-xl font-bold">
-                                1
-                            </div>
+                            const isEven = index % 2 === 1;
 
-                            <h3 className="font-semibold text-lg mt-6 text-(--dark)">
-                                Pilih Menu atau Paket
-                            </h3>
+                            return (
+                                <div
+                                    key={step.id}
+                                    className="grid grid-cols-[1fr_auto] lg:grid-cols-3 items-center gap-8"
+                                >
 
-                            <p className="text-sm text-gray-600 mt-3">
-                                Lihat berbagai pilihan jajan pasar dan paket snack box yang tersedia
-                                di halaman menu atau paket acara.
-                            </p>
+                                    {/* NUMBER LEFT (untuk step genap) */}
+                                    {isEven && (
+                                        <div className="flex justify-center text-[40px] md:text-[70px] lg:text-[160px] font-bold text-[#EFE6DD] select-none">
+                                            {String(step.id).padStart(2, "0")}
+                                        </div>
+                                    )}
+                                    {/* CARD */}
+                                    <div
+                                        className={`
+            col-span-1
+            ${isEven ? "lg:col-start-2 lg:col-span-2" : "lg:col-start-1 lg:col-span-2"}
+          `}
+                                    >
 
-                            <Link
-                                href="/menu"
-                                className="inline-block mt-4 text-(--primary) font-semibold text-sm"
-                            >
-                                Lihat Menu →
-                            </Link>
+                                        <div className="bg-white rounded-2xl border border-[#E8D8CC] shadow-sm p-6 lg:p-8 flex flex-col md:flex-row items-center gap-6">
 
-                        </div>
+                                            {/* IMAGE */}
+                                            <div className="md:w-[35%] w-full">
 
+                                                <div className="bg-[#F6EFE7] rounded-xl p-4">
 
-                        {/* STEP 2 */}
-                        <div className="text-center">
+                                                    <Image
+                                                        src={step.image}
+                                                        alt={step.title}
+                                                        width={400}
+                                                        height={300}
+                                                        className="mx-auto"
+                                                    />
 
-                            <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-(--primary) text-white text-xl font-bold">
-                                2
-                            </div>
+                                                </div>
 
-                            <h3 className="font-semibold text-lg mt-6 text-(--dark)">
-                                Hubungi WhatsApp
-                            </h3>
+                                            </div>
 
-                            <p className="text-sm text-gray-600 mt-3">
-                                Klik tombol pesan dan hubungi kami melalui WhatsApp untuk
-                                melakukan pemesanan.
-                            </p>
+                                            {/* TEXT */}
+                                            <div className="md:w-[65%]">
 
-                        </div>
+                                                <p className="text-sm font-semibold text-gray-500">
+                                                    {String(step.id).padStart(2, "0")}
+                                                </p>
 
+                                                <h3 className="text-lg md:text-xl font-semibold text-(--dark) mt-1">
+                                                    {step.title}
+                                                </h3>
 
-                        {/* STEP 3 */}
-                        <div className="text-center">
+                                                <p className="text-gray-600 mt-3 text-sm md:text-base">
+                                                    {step.desc}
+                                                </p>
 
-                            <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-(--primary) text-white text-xl font-bold">
-                                3
-                            </div>
+                                                <p className="text-sm text-gray-500 mt-4">
+                                                    <span className="font-semibold">Tambahan:</span> {step.note}
+                                                </p>
 
-                            <h3 className="font-semibold text-lg mt-6 text-(--dark)">
-                                Tentukan Jumlah & Jadwal
-                            </h3>
+                                            </div>
 
-                            <p className="text-sm text-gray-600 mt-3">
-                                Diskusikan jumlah pesanan, pilihan menu, serta tanggal pengiriman
-                                sesuai kebutuhan acara Anda.
-                            </p>
+                                        </div>
 
-                        </div>
+                                    </div>
 
+                                    {/* NUMBER RIGHT (untuk step ganjil) */}
+                                    {!isEven && (
+                                        <div className="flex justify-center text-[40px] md:text-[70px] lg:text-[160px] font-bold text-[#EFE6DD] select-none">
+                                            {String(step.id).padStart(2, "0")}
+                                        </div>
+                                    )}
 
-                        {/* STEP 4 */}
-                        <div className="text-center">
+                                </div>
+                            );
 
-                            <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-(--primary) text-white text-xl font-bold">
-                                4
-                            </div>
-
-                            <h3 className="font-semibold text-lg mt-6 text-(--dark)">
-                                Pesanan Diproses
-                            </h3>
-
-                            <p className="text-sm text-gray-600 mt-3">
-                                Tim Dapur Vanny akan menyiapkan pesanan Anda dan mengirimkannya
-                                tepat waktu ke lokasi acara.
-                            </p>
-
-                        </div>
+                        })}
 
                     </div>
 
+
                 </div>
 
-            </section>
 
+            </section >
+            <FAQ />
             <CTA />
         </>
     );

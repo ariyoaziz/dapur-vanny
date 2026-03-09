@@ -4,6 +4,7 @@ import { useState } from "react";
 import { packageItems } from "@/data/packages";
 import Image from "next/image";
 import CTA from "@/components/CTA";
+import Link from "next/link";
 
 export default function PaketAcaraPage() {
 
@@ -11,12 +12,16 @@ export default function PaketAcaraPage() {
 
     const ITEMS_PER_PAGE = 6;
 
-    const totalPages = Math.ceil(packageItems.length / ITEMS_PER_PAGE);
+    // LOAD MORE
+    const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
-    const paginatedPackages = packageItems.slice(
-        (page - 1) * ITEMS_PER_PAGE,
-        page * ITEMS_PER_PAGE
-    );
+    const hasMore = visibleCount < packageItems.length;
+
+    const handleLoadMore = () => {
+        setVisibleCount((prev) => prev + ITEMS_PER_PAGE);
+    };
+
+    const paginatedPackages = packageItems.slice(0, visibleCount);
 
     return (
         <>
@@ -39,14 +44,14 @@ export default function PaketAcaraPage() {
 
 
                     {/* GRID */}
-                    <div className="grid mt-14 gap-8 grid-cols-2 lg:grid-cols-3">
+                    <div className="grid mt-14 gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 
                         {paginatedPackages.map((item, index) => (
 
                             <div
                                 key={item.id}
-                                className={`bg-white rounded-2xl p-5 shadow-sm border border-gray-100
-                ${index >= 4 ? "hidden lg:block" : ""}`}
+                                style={{ animationDelay: `${(index % ITEMS_PER_PAGE) * 150}ms` }}
+                                className={`bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col justify-between animate-fadeUp opacity-0 h-full`}
                             >
 
                                 <div className="relative">
@@ -91,14 +96,12 @@ export default function PaketAcaraPage() {
                                     Mulai dari Rp{item.price.toLocaleString()} / box
                                 </p>
 
-                                <a
-                                    href={`https://wa.me/628000000000?text=${encodeURIComponent(
-                                        `Halo saya ingin memesan ${item.name}`
-                                    )}`}
-                                    className="inline-block mt-4 bg-(--primary) text-white px-5 py-2 rounded-full text-sm font-semibold"
+                                <Link
+                                    href={`/paket-acara/${item.id}`}
+                                    className="w-full text-center mt-6 bg-(--primary) text-white px-5 py-3 rounded-xl text-sm font-semibold hover:opacity-90 transition active:scale-95"
                                 >
-                                    Pilih Paket Ini
-                                </a>
+                                    Lihat Detail Paket
+                                </Link>
 
                             </div>
 
@@ -107,47 +110,17 @@ export default function PaketAcaraPage() {
                     </div>
 
 
-                    {/* PAGINATION */}
-                    <div className="flex justify-center mt-12 gap-3">
-
-                        <button
-                            onClick={() => setPage((p) => Math.max(p - 1, 1))}
-                            disabled={page === 1}
-                            className={`w-9 h-9 rounded-full flex items-center justify-center border
-              ${page === 1 ? "opacity-40 cursor-not-allowed" : "hover:bg-gray-100"}`}
-                        >
-                            ‹
-                        </button>
-
-                        {Array.from({ length: totalPages || 1 }).map((_, i) => {
-
-                            const pageNumber = i + 1;
-
-                            return (
-                                <button
-                                    key={pageNumber}
-                                    onClick={() => setPage(pageNumber)}
-                                    className={`w-9 h-9 rounded-full flex items-center justify-center
-                  ${page === pageNumber
-                                            ? "bg-(--primary) text-white"
-                                            : "border hover:bg-gray-100"}`}
-                                >
-                                    {pageNumber}
-                                </button>
-                            );
-
-                        })}
-
-                        <button
-                            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-                            disabled={page === totalPages}
-                            className={`w-9 h-9 rounded-full flex items-center justify-center border
-              ${page === totalPages ? "opacity-40 cursor-not-allowed" : "hover:bg-gray-100"}`}
-                        >
-                            ›
-                        </button>
-
-                    </div>
+                    {/* LOAD MORE */}
+                    {hasMore && (
+                        <div className="flex justify-center mt-12">
+                            <button
+                                onClick={handleLoadMore}
+                                className="px-8 py-3 rounded-full border-2 border-(--primary) text-(--primary) font-semibold hover:bg-(--primary) hover:text-white transition active:scale-95"
+                            >
+                                Tampilkan Lebih Banyak
+                            </button>
+                        </div>
+                    )}
 
                 </div>
 

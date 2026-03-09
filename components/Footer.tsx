@@ -58,7 +58,7 @@ export default function Footer() {
                 <div className="text-sm text-gray-300 space-y-3">
 
                     <p>
-                        <span className="font-semibold text-white">WhatsApp:</span> 08xxxxxxxxxx
+                        <span className="font-semibold text-white">WhatsApp:</span> 0877-6270-7319
                     </p>
 
                     <p>
